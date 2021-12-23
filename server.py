@@ -132,17 +132,16 @@ def generate_frames():
                         "Access Permission": "NO",
                         "Image": studentImages[name]
                     }
-                    print(studentImages[name])
 
                 with open("templates/data.json", "w") as outfile:
                     json.dump(dictionary, outfile)
                 i += 1
             i = 0
 
+        # Detec face bang cai frame danh cho Admin! Website chi hien thi mat cho user thoi.
         cv2.imshow("Admin Page", frame2)
         if cv2.waitKey(1) & 0xFF == ord('s'):
             pass
-
 
         ret, buffer = cv2.imencode('.jpg', frame1)
         frame1 = buffer.tobytes()
@@ -164,7 +163,6 @@ def video():
 def result():
     f = open("templates/data.json")
     data = json.load(f)
-    print(data['Image'])
     return render_template('result.html', jsonfile=json.dumps(data), studentImage=f"{data['Image']}")
 
 
