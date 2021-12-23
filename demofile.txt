@@ -1,0 +1,5 @@
+name,id,vaccination,firstDose,secondDose,F0,expired ID,campus,daily health declaration,Health Declaration Status
+Pham Gia Nguyen,s3819521,True,AstraZenaca,AstraZenaca,No,31 December 2023,Saigon South Campus,07/01/2022,Qualified
+Huynh Van Anh,s3836605,True,AstraZenaca,AstraZenaca,No,31 December 2023,Saigon South Campus,07/01/2022,Qualified
+La Tran Hai Dang,s3836320,True,AstraZenaca,AstraZenaca,No,31 December 2023,Saigon South Campus,07/01/2022,Qualified
+Le Ngoc Han,False,s000000,AstraZenaca,NULL,No,31 December 2023,Saigon South Campus,07/01/2022,Qualified

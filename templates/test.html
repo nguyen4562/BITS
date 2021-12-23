@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title> Puzzle Cam </title>
+    <script type="text/javascript" src="script.js">
+    </script>
+    <device type="media" onchange="update(this.data)"></device>
+    <video autoplay></video>
+    <script>
+      function update(stream) {
+        document.querySelector('video').src = stream.url;
+      }
+    </script>
+    <video autoplay></video>
+
+    <script>
+      const constraints = {
+        video: true,
+      };
+
+      const video = document.querySelector("video");
+
+      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+        video.srcObject = stream;
+      });
+    </script>
+  </head>
+
+  <body onload="main()">
+    <canvas id="myCanvas"></canvas>
+    <input type="file" accept="image/*;capture=camera">
+  </body>
+
+</html>
+
+<!--chrome://flags/#unsafely-treat-insecure-origin-as-secure-->

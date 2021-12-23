@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1" />-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <title>House</title>-->
+<!--    <link-->
+<!--      rel="stylesheet"-->
+<!--      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"-->
+<!--      integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"-->
+<!--      crossorigin="anonymous"-->
+<!--    />-->
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Page Design Example</title>
+
+    <meta name="author" content="Codeconvey" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='template//css/demo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='template/css/style.css') }}">
+
+  </head>
+  <body>
+
+
+<header class="ScriptHeader">
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	<div class="rt-heading">
+            	<h1>RMIT University</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="rt-container">
+          <div class="col-rt-12">
+              <div class="Scriptcontent">
+
+<!-- Student Profile -->
+<div class="student-profile py-4">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent text-center">
+            <img class="profile_img" src="{{url_for('static', filename=studentImage)}}" alt="student dp">
+            <h3 id="name"></h3>
+          </div>
+          <div class="card-body">
+            <p id="studentID"  class="mb-0"></p>
+            <p id="expireDate" class="mb-0"></p>
+            <p id="campus"     class="mb-0"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+              <tr>
+                <th width="30%">First Dose</th>
+                <td width="2%">:</td>
+                <td id="dose1"></td>
+              </tr>
+              <tr>
+                <th width="30%">Second Dose</th>
+                <td width="2%">:</td>
+                <td id="dose2"></td>
+              </tr>
+              <tr>
+                <th width="30%">Vaccination</th>
+                <td width="2%">:</td>
+                <td id="status"></td>
+              </tr>
+              <tr>
+                <th width="30%">Infected with COVID-19</th>
+                <td width="2%">:</td>
+                <td id="infected"></td>
+              </tr>
+              <tr>
+                <th width="30%">Daily Health Declaration</th>
+                <td width="2%">:</td>
+                <td id="healthDeclare"></td>
+              </tr>
+              <tr>
+                <th width="30%">Health Declaration Status</th>
+                <td width="2%">:</td>
+                <td id="healthDeclareStatus"></td>
+              </tr>
+              <tr>
+                <th width="30%">Access Permission</th>
+                <td width="2%">:</td>
+                <td id="permission"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="test">
+          <button class="reloadButton" onclick="window.location.reload()">Reload</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    		</div>
+		</div>
+    </div>
+</section>
+
+    <script>
+      const jsonfile = JSON.parse({{jsonfile|tojson}});
+      document.querySelector("#name").innerHTML = jsonfile["Full Name"];
+      document.querySelector("#dose1").innerHTML = jsonfile["First Dose"];
+      document.querySelector("#dose2").innerHTML = jsonfile["Second Dose"];
+      document.querySelector("#status").innerHTML = jsonfile["Vaccine status"];
+      document.querySelector("#infected").innerHTML = jsonfile["Infected"];
+      document.querySelector("#healthDeclare").innerHTML = jsonfile["Health Declaration Date"];
+      document.querySelector("#healthDeclareStatus").innerHTML = jsonfile["Health Declaration Status"];
+      document.querySelector("#permission").innerHTML = jsonfile["Access Permission"];
+
+      function addData(tag, value, id){
+        const div = document.createElement('div');
+        div.classsName = 'row';
+
+        div.innerHTML = '<strong class="pr-1">' + tag + ':</strong>' + value;
+        document.getElementById(id).appendChild(div);
+      }
+
+      addData("Student ID", jsonfile["Student Id"], "studentID");
+      addData("Expiry Date", jsonfile["Expired Date"], "expireDate");
+      addData("Campus", jsonfile["Campus"], "campus");
+
+    </script>
+
+  </body>
+</html>
